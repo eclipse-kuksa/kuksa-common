@@ -1,7 +1,7 @@
 # Databroker Example Tokens
 
-This directory contains example tokens for demo and test purposes for KUKSA.val Databroker.
-For more information on token format see [documentation](../doc/KUKSA.val_data_broker/authorization.md).
+This directory contains example tokens for demo and test purposes for KUKSA Databroker.
+For more information on token format see [documentation](./authorization.md).
 
 ## Available tokens
 
@@ -15,14 +15,16 @@ For more information on token format see [documentation](../doc/KUKSA.val_data_b
 
 ## Create new tokens
 
-Tokens can be generated as described in [documentation](../kuksa_certificates/README.md).
+Two helper scripts exist for generating keys and tokens
+
+* [recreateJWTkeyPair.sh](recreateJWTkeyPair.sh) to regenerate the JWT keys used for signing
+* [createToken.py](createToken.py) to create signed tokens, requires `*.json` files as parameters
+
 Note that token generation must take place from the directory containing `createToken.py`
 
 An example is shown below:
 
 ```
-~/kuksa.val/kuksa_certificates/jwt$ python -m createToken ../../jwt/actuate-provide-all.json 
-Reading private key from jwt.key
-Reading JWT payload from ../../jwt/actuate-provide-all.json
-Writing signed access token to ../../jwt/actuate-provide-all.token
+pip install -r requirements.txt
+python -m createToken actuate-provide-all.json 
 ```

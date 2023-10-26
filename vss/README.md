@@ -1,8 +1,8 @@
-# KUKSA.val VSS handling
+# KUKSA VSS Data
 
 ## Introduction
 
-KUKSA.val is adapted to use Vehicle Signals Specification as defined by COVESA.
+KUKSA is adapted to use Vehicle Signals Specification as defined by COVESA.
 The ambition is to always support the latest released version available at the
 [COVESA VSS release page](https://github.com/COVESA/vehicle_signal_specification/releases).
 In addition older versions may be supported. This folder contains copies of all versions supported.
@@ -53,7 +53,7 @@ use the full name. When official release is created replace the copied *.json-fi
 ## Tests after update
 
 ### Kuksa-val-server unit tests
-* Run kuksa-val-server unit tests according to [documentation](../../kuksa-val-server/test/unit-test/readme.md)
+* Run kuksa-val-server unit tests according to [documentation](https://github.com/eclipse/kuksa.val/kuksa-val-server/test/unit-test/readme.md)
 
 ### Kuksa-val-server smoke test
 * Build and start kuksa-val-server with new VSS release as described in the [README](https://github.com/eclipse/kuksa.val/blob/master/kuksa-val-server/README.md)
@@ -139,7 +139,7 @@ Test Client> getValue Vehicle.CurrentLocation.Latitude
 
 ### Kuksa_databroker smoke test
 
-Build and run kuksa_databroker using the new VSS file according to [documentation](../../kuksa_databroker/README.md), e.g.
+Build and run kuksa_databroker using the new VSS file according to [documentation](https://github.com/eclipse/kuksa.val/kuksa_databroker/README.md), e.g.
 
 ```sh
 $cargo run --bin databroker -- --metadata ../data/vss-core/vss_release_4.0.json

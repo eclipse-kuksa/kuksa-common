@@ -9,7 +9,7 @@
 
 
 
-echo "Recreating kuksa.val key pair used for JWT verification"
+echo "Recreating KUKSA key pair used for JWT verification"
 echo "-------------------------------------------------------"
 
 
@@ -20,4 +20,4 @@ printf "\nCreating public key\n"
 openssl rsa -in jwt.key -pubout -outform PEM -out jwt.key.pub
 
 printf '\nYou can use the PRIVATE key "jwt.key" to generate new tokens using https://jwt.io or the "createToken.py" script.\n'
-echo 'You need to give the PUBLIC key "jwt.key.pub" to the kuksa.val server, so it can verify correctly signed JWT tokens.'
+echo 'You need to give the PUBLIC key "jwt.key.pub" to the KUKSA Databroker, so it can verify correctly signed JWT tokens.'
