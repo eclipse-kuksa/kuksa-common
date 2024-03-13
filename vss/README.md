@@ -3,18 +3,20 @@
 ## Introduction
 
 KUKSA is adapted to use Vehicle Signals Specification as defined by COVESA.
-The ambition is to always support the latest released version available at the
-[COVESA VSS release page](https://github.com/COVESA/vehicle_signal_specification/releases).
-In addition older versions may be supported. This folder contains copies of all versions supported.
+Officially released versions are available at the [COVESA VSS release page](https://github.com/COVESA/vehicle_signal_specification/releases).
+For convenience JSON versions of the official VSS catalogs has been copied to this repository.
 
-## Supported VSS versions
+## Included VSS versions
 
-* [VSS 4.0](https://github.com/COVESA/vehicle_signal_specification/releases/tag/v4.0)
-* [VSS 3.1.1](https://github.com/COVESA/vehicle_signal_specification/releases/tag/v3.1.1)
-* [VSS 3.0](https://github.com/COVESA/vehicle_signal_specification/releases/tag/v3.0)
-* [VSS 2.2](https://github.com/COVESA/vehicle_signal_specification/releases/tag/v2.2)
-* [VSS 2.1](https://github.com/COVESA/vehicle_signal_specification/releases/tag/v2.1)
-* [VSS 2.0](https://github.com/COVESA/vehicle_signal_specification/releases/tag/v2.0)
+Version | Used as default in Databroker versions
+--------|----------------
+[VSS 4.1](https://github.com/COVESA/vehicle_signal_specification/releases/tag/v4.1) |
+[VSS 4.0](https://github.com/COVESA/vehicle_signal_specification/releases/tag/v4.0)  | `0.4.0` -
+[VSS 3.1.1](https://github.com/COVESA/vehicle_signal_specification/releases/tag/v3.1.1) | `0.3.1`
+[VSS 3.0](https://github.com/COVESA/vehicle_signal_specification/releases/tag/v3.0) | `0.2.5` - `0.3.0`
+[VSS 2.2](https://github.com/COVESA/vehicle_signal_specification/releases/tag/v2.2) |
+[VSS 2.1](https://github.com/COVESA/vehicle_signal_specification/releases/tag/v2.1) |
+[VSS 2.0](https://github.com/COVESA/vehicle_signal_specification/releases/tag/v2.0) |
 
 ### Known limitations
 
