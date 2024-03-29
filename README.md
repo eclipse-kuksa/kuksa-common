@@ -7,9 +7,10 @@ Content of this repository
 
 | Content      | Location    |  Comment |
 | ------------ | ----------- | ------------ |
-| Official VSS releases in JSON format | [vss](./vss) | Supported by both KUKSA Databroker and KUKSA Server
-| KUKSA Example keys and certificates for TLS | [tls](./tls) | Supported by both KUKSA Databroker and KUKSA Server
-| KUKSA Databroker Tokens | [jwt](./jwt/) | Not supported by KUKSA Server 
+| Official VSS releases in JSON format | [vss](./vss) | Supported by both KUKSA Databroker and KUKSA Server |
+| KUKSA Example keys and certificates for TLS | [tls](./tls) | Supported by both KUKSA Databroker and KUKSA Server |
+| KUKSA Databroker Tokens | [jwt](./jwt/) | Not supported by KUKSA Server |
+| SBOM tools | [sbom-tools](./sbom-tools) | Used in CI |
 
 *Note: The tokens supported by KUKSA Server are available in [kuksa.val](https://github.com/eclipse/kuksa.val/tree/master/kuksa_certificates/jwt) repository!*
 
