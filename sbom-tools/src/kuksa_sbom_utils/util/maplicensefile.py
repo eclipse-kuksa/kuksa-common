@@ -38,5 +38,7 @@ supported_licenses = {
     # License text taken from https://spdx.org/licenses/BSD-3-Clause.html
     "BSD-3-Clause": "BSD-3-Clause.txt.gz",
     # License text taken from https://www.openssl.org/source/license-openssl-ssleay.txt
-    "OPENSSL": "OpenSSL.txt.gz"
+    "OPENSSL": "OpenSSL.txt.gz",
+    # License text taken from https://www.unicode.org/license.txt
+    "Unicode-3.0": "Unicode-3.0.txt.gz"
 }
