@@ -40,8 +40,8 @@ This is the process for introducing support for a new VSS version:
 * Some files (`*.txt`) instead list all versions, there just add the new version
 * If needed, adapt or extend test cases to use the new version instead of previous version
 * Remember to also integrate new version in [KUKSA Feeder](https://github.com/eclipse/kuksa.val.feeders) repository
-    * Needed for [dbc2val](https://github.com/eclipse/kuksa.val.feeders/blob/main/dbc2val/mapping/mapping.md)
-    * Needed for [dds2val](https://github.com/eclipse/kuksa.val.feeders/blob/main/dds2val/ddsproviderlib/idls/generate_py_dataclass.sh)
+    * Needed for [dbc2val](https://github.com/eclipse-kuksa/kuksa-can-provider/blob/main/mapping/README.md)
+    * Needed for [dds2val](https://github.com/eclipse-kuksa/kuksa-dds-provider/blob/main/ddsproviderlib/idls/generate_py_dataclass.sh)
 
 ### Release Candidate Handling
 
@@ -55,12 +55,12 @@ use the full name. When official release is created replace the copied *.json-fi
 ## Tests after update
 
 ### Kuksa-val-server unit tests
-* Run kuksa-val-server unit tests according to [documentation](https://github.com/eclipse/kuksa.val/kuksa-val-server/test/unit-test/readme.md)
+* Run kuksa-val-server unit tests according to [documentation](https://github.com/eclipse-archived/kuksa.val/blob/master/kuksa-val-server/test/unit-test/readme.md)
 
 ### Kuksa-val-server smoke test
-* Build and start kuksa-val-server with new VSS release as described in the [README](https://github.com/eclipse/kuksa.val/blob/master/kuksa-val-server/README.md)
-* If needed [generate new certificates](https://github.com/eclipse/kuksa.val/tree/master/kuksa_certificates)
-* [Start Kuksa Client](https://github.com/eclipse/kuksa.val/blob/master/kuksa-client/README.md) and perform some basic tests that VSS changes are present
+* Build and start kuksa-val-server with new VSS release as described in the [README](https://github.com/eclipse-archived/kuksa.val/blob/master/kuksa-val-server/README.md)
+* If needed [generate new certificates](https://github.com/eclipse-kuksa/kuksa-databroker/tree/main/certificates)
+* [Start Kuksa Client](https://github.com/eclipse-kuksa/kuksa-python-sdk/blob/main/kuksa-client/README.md) and perform some basic tests that VSS changes are present
 
 Examples:
 
@@ -110,12 +110,12 @@ Test Client> getValue Vehicle.CurrentLocation.Longitude
 
 ### Kuksa-val-server and dbc2val smoke test
 
-Run dbc2val as described in [documentation](https://github.com/eclipse/kuksa.val.feeders/blob/main/dbc2val/README.md) using example [dump file](https://github.com/eclipse/kuksa.val.feeders/blob/main/dbc2val/candump.log). Verify that no errors appear in kuksa-val-server log. Not all signals in the [mapping files](https://github.com/eclipse/kuksa.val.feeders/blob/main/dbc2val/mapping/) are used by the example dump file, but it can be verified using Kuksa Client that e.g. `Vehicle.Speed` has been given a value.
+Run dbc2val as described in [documentation](https://github.com/eclipse-kuksa/kuksa-can-provider/blob/main/README.md) using example [dump file](https://github.com/eclipse-kuksa/kuksa-can-provider/blob/main/candump.log). Verify that no errors appear in kuksa-val-server log. Not all signals in the [mapping files](https://github.com/eclipse-kuksa/kuksa-can-provider/blob/main/mapping/) are used by the example dump file, but it can be verified using Kuksa Client that e.g. `Vehicle.Speed` has been given a value.
 
 
 ### Kuksa-val-server and gps2val smoke test
 
-Run gps2val as described in [documentation](https://github.com/eclipse/kuksa.val.feeders/blob/main/gps2val/README.md) using example log. If gpsd already is running at port 2947 a different port like 2949 may be used. Then [gps2val config file](https://github.com/eclipse/kuksa.val.feeders/blob/main/gps2val/config/gpsd_feeder.ini) must also be updated to use that port. If device handling does not work on test platform `-t` can be used to uss TCP instead.
+Run gps2val as described in [documentation](https://github.com/eclipse-kuksa/kuksa-gps-provider/blob/main/README.md) using example log. If gpsd already is running at port 2947 a different port like 2949 may be used. Then [gps2val config file](https://github.com/eclipse-kuksa/kuksa-gps-provider/blob/main/config/gpsd_feeder.ini) must also be updated to use that port. If device handling does not work on test platform `-t` can be used to uss TCP instead.
 
 ```
 gpsfake -t -P 2949 simplelog_example.nmea
@@ -131,7 +131,7 @@ VERBOSE: SubscriptionHandler::publishForVSSPath: set value 8.927633333 for path 
 VERBOSE: SubscriptionHandler::publishForVSSPath: set value 12.244000434875488 for path Vehicle.Speed
 ```
 
-The [Kuksa Client](https://github.com/eclipse/kuksa.val/blob/master/kuksa-client/README.md) can be used to verify that data actually is correctly interpreted.
+The [Kuksa Client](https://github.com/eclipse-kuksa/kuksa-python-sdk/blob/main/kuksa-client/README.md) can be used to verify that data actually is correctly interpreted.
 
 ```
 Test Client> getValue Vehicle.CurrentLocation.Latitude
@@ -141,7 +141,7 @@ Test Client> getValue Vehicle.CurrentLocation.Latitude
 
 ### Kuksa_databroker smoke test
 
-Build and run kuksa_databroker using the new VSS file according to [documentation](https://github.com/eclipse/kuksa.val/kuksa_databroker/README.md), e.g.
+Build and run kuksa_databroker using the new VSS file according to [documentation](https://github.com/eclipse-kuksa/kuksa-databroker/blob/main/README.md), e.g.
 
 ```sh
 $cargo run --bin databroker -- --metadata ../data/vss-core/vss_release_4.0.json
@@ -160,9 +160,9 @@ client> get Vehicle.CurrentLocation.Latitude
 
 ### Kuksa_databroker and dbc2val smoke test
 
-Run dbc2val as described in [documentation](https://github.com/eclipse/kuksa.val.feeders/blob/main/dbc2val/Readme.md) using example [dump file](https://github.com/eclipse/kuksa.val.feeders/blob/main/dbc2val/candump.log). It is important to use databroker mode.
+Run dbc2val as described in [documentation](https://github.com/eclipse-kuksa/kuksa-can-provider/blob/main/README.md) using example [dump file](https://github.com/eclipse-kuksa/kuksa-can-provider/blob/main/candump.log). It is important to use databroker mode.
 
 ```sh
 ./dbcfeeder.py --usecase databroker --address=127.0.0.1:55555
 ```
-Verify that no errors appear in kuksa-val-server log. Not all signals in the [mapping files](https://github.com/eclipse/kuksa.val.feeders/blob/main/dbc2val/mapping) are used by the example dump file, but it can be verified using Kuksa Client that e.g. `Vehicle.Speed` has been given a value.
+Verify that no errors appear in kuksa-val-server log. Not all signals in the [mapping files](https://github.com/eclipse-kuksa/kuksa-can-provider/blob/main/mapping) are used by the example dump file, but it can be verified using Kuksa Client that e.g. `Vehicle.Speed` has been given a value.

@@ -10,7 +10,7 @@ This directory contain a set of example certificates, used by the KUKSA-project 
 They may or may not be useful for your test environment.
 If needed you can customize `genCerts.sh` and generate keys and certificates that fits your environment.
 
-See the [KUKSA TLS documentation](https://github.com/eclipse/kuksa.val//doc/tls.md) for general information on the KUKSA TLS concept.
+See the [KUKSA TLS documentation](https://github.com/eclipse-kuksa/kuksa-databroker/blob/main/doc/tls.md) for general information on the KUKSA TLS concept.
 
 This directory contains the following files with cryptographical information.
 
@@ -42,5 +42,3 @@ If you want to regenerate `CA.pem` you must first delete it.
 **NOTE: The script genCerts.sh may not be suitable to use for generating keys and certificates for your production environment!**
 
 **NOTE: Please consult with your Project Security Manager (or equivalent role in your organization) on how your keys and certificates shall be generated!**
-
-
