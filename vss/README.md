@@ -59,7 +59,7 @@ use the full name. When official release is created replace the copied *.json-fi
 
 ### Kuksa-val-server smoke test
 * Build and start kuksa-val-server with new VSS release as described in the [README](https://github.com/eclipse-archived/kuksa.val/blob/master/kuksa-val-server/README.md)
-* If needed [generate new certificates](https://github.com/eclipse-kuksa/kuksa-databroker/tree/main/certificates)
+* If needed [generate new certificates](https://github.com/eclipse-kuksa/kuksa-common/tree/main/tls)
 * [Start Kuksa Client](https://github.com/eclipse-kuksa/kuksa-python-sdk/blob/main/kuksa-client/README.md) and perform some basic tests that VSS changes are present
 
 Examples:
