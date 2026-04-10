@@ -20,8 +20,26 @@ import argparse
 import sys
 from os import path
 
+from cryptography.hazmat.primitives.serialization import load_pem_private_key
+from cryptography.hazmat.primitives.asymmetric.rsa import RSAPrivateKey
+from cryptography.hazmat.primitives.asymmetric.ec import EllipticCurvePrivateKey, SECP256R1
+from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+
 import json
 import jwt
+
+
+def infer_algorithm(priv_key_pem: str) -> str:
+    key = load_pem_private_key(priv_key_pem.encode(), password=None)
+    if isinstance(key, RSAPrivateKey):
+        return "RS256"
+    if isinstance(key, EllipticCurvePrivateKey):
+        if isinstance(key.curve, SECP256R1):
+            return "ES256"
+        raise ValueError(f"Unsupported EC curve: {key.curve.name}")
+    if isinstance(key, Ed25519PrivateKey):
+        return "EdDSA"
+    raise ValueError(f"Unsupported key type: {type(key).__name__}")
 
 
 def error_exit(msg):
@@ -29,12 +47,12 @@ def error_exit(msg):
     sys.exit(1)
 
 
-def createJWTToken(input_filename, priv_key, output_filename=None):
+def createJWTToken(input_filename, priv_key, algorithm, output_filename=None):
     print("Reading JWT payload from {}".format(input_filename))
     with open(input_filename, "r") as file:
         payload = json.load(file)
 
-    encoded = jwt.encode(payload, priv_key, algorithm="RS256")
+    encoded = jwt.encode(payload, priv_key, algorithm=algorithm)
 
     if output_filename is None:
         output_filename = input_filename[:-5] if input_filename.endswith(".json") else input_filename
@@ -61,12 +79,15 @@ def main():
         Output filename can be specified for single input file only!
         """)
 
-    print("Reading private key from {}".format("jwt.key"))
+    print("Reading private key from {}".format(args.priv_key_filename))
     with open(args.priv_key_filename, "r") as file:
         priv_key = file.read()
 
+    algorithm = infer_algorithm(priv_key)
+    print("Detected key algorithm: {}".format(algorithm))
+
     for input_file in args.files:
-        createJWTToken(input_file, priv_key, args.output)
+        createJWTToken(input_file, priv_key, algorithm, args.output)
 
 
 if __name__ == "__main__":
