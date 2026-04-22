@@ -143,7 +143,7 @@ Header:
 ```yaml
 {
   "typ": "at+JWT",
-  "alg": "RS256"
+  "alg": "ES256"
 }
 ```
 
